@@ -14,4 +14,5 @@ $ cmake -B build && cmake --build build
 $ cd build
 $ ./server
 $ ./client
+$ ./hello_world
 ```

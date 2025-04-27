@@ -24,3 +24,7 @@ target_link_libraries(server event_static)
 # 클라이언트 빌드
 add_executable(client src/client.c)
 target_link_libraries(client event_static)
+
+# hello_world.c
+add_executable(hello_world src/hello_world.c)
+target_link_libraries(hello_world event_shared)
