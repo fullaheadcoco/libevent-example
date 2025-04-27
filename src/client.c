@@ -22,7 +22,10 @@ static void event_cb(struct bufferevent *bev, short events, void *ctx) {
   if (events & BEV_EVENT_CONNECTED) {
     printf("서버에 연결되었습니다.\n");
     char message[] = "안녕하세요, 서버!";
-    bufferevent_write(bev, message, strlen(message));
+
+    // original code : bufferevent_write(bev, message, strlen(message));
+    struct evbuffer *output = bufferevent_get_output(bev);
+    evbuffer_add(output, message, strlen(message));
   } else if (events & BEV_EVENT_ERROR) {
     int err = bufferevent_socket_get_dns_error(bev);
     if (err) {
